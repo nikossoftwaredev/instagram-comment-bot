@@ -1,7 +1,12 @@
 import puppeteer from "puppeteer";
 import "dotenv/config";
 
-const { INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD, INSTAGRAM_TAGS } = process.env;
+const {
+  INSTAGRAM_USERNAME,
+  INSTAGRAM_PASSWORD,
+  INSTAGRAM_TAGS,
+  INSTAGRAM_POST_LINK,
+} = process.env;
 
 const getRandomTimeout = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -11,9 +16,7 @@ const getRandomTimeout = (min, max) => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
-  await page.goto(
-    "https://www.instagram.com/accounts/login/?next=%2Fp%2FCtzKZhuL7tN%2F&source=post_comment_input"
-  );
+  await page.goto(INSTAGRAM_POST_LINK);
 
   const allowCookiesButton = await page.waitForSelector("button._a9--._a9_0");
   await allowCookiesButton.click();
