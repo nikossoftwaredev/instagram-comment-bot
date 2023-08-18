@@ -45,7 +45,7 @@ const getRandomTimeout = (min, max) => {
     commentSection.focus();
     await commentSection.type(INSTAGRAM_TAGS, { delay: 50 });
 
-    const timeout = getRandomTimeout(50000, 60000);
+    const timeout = getRandomTimeout(40000, 50000);
     await new Promise((r) => setTimeout(r, timeout));
 
     // Locate the div inside the form using the provided selector
@@ -53,6 +53,6 @@ const getRandomTimeout = (min, max) => {
     const postButton = await page.waitForSelector(postButtonSelector);
     await postButton.click();
 
-    await new Promise((r) => setTimeout(r, 6000));
+    await new Promise((r) => setTimeout(r, 10000));
   }
 })();
